@@ -1,0 +1,73 @@
+{
+  "root": "apps/npm-version-bump",
+  "sourceRoot": "apps/npm-version-bump/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/npm-version-bump",
+        "index": "apps/npm-version-bump/src/index.html",
+        "baseHref": "/",
+        "main": "apps/npm-version-bump/src/main.tsx",
+        "polyfills": "apps/npm-version-bump/src/polyfills.ts",
+        "tsConfig": "apps/npm-version-bump/tsconfig.app.json",
+        "assets": [
+          "apps/npm-version-bump/src/favicon.ico",
+          "apps/npm-version-bump/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/npm-version-bump/src/environments/environment.ts",
+              "with": "apps/npm-version-bump/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "npm-version-bump:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "npm-version-bump:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/npm-version-bump/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/npm-version-bump"],
+      "options": {
+        "jestConfig": "apps/npm-version-bump/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

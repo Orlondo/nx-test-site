@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "npm-version-bump": "apps/npm-version-bump",
+    "npm-version-bump-e2e": "apps/npm-version-bump-e2e"
+  }
+}

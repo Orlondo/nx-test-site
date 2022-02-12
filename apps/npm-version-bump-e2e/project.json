@@ -1,0 +1,28 @@
+{
+  "root": "apps/npm-version-bump-e2e",
+  "sourceRoot": "apps/npm-version-bump-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/npm-version-bump-e2e/cypress.json",
+        "devServerTarget": "npm-version-bump:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "npm-version-bump:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/npm-version-bump-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["npm-version-bump"]
+}
